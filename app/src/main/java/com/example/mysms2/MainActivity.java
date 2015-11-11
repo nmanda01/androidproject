@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
@@ -19,14 +20,41 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+
+
+
+        /*
+
+
+        Button compose = (Button) findViewById(R.id.btnCompose);
+        compose.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+
+            }
+        });
+
+
+        Button inbox = (Button) findViewById(R.id.btnInbox);
+        inbox.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                SendSmsActivity msg = new SendSmsActivity();
+            }
+        });
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_1);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "Menu", Snackbar.LENGTH_LONG).setAction("Send", )).show();
             }
         });
+        */
+
     }
 
     @Override
