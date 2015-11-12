@@ -13,23 +13,20 @@ import java.util.ArrayList;
 
 public class SmsContactManager {
 
-    public static String DisplayName= null;
-    public static String MobileNumber = null;
+    //This method takes two strings (name and number) and creates a contact with those fields entered. 
+    public static void addContact (String DisplayName, String MobileNumber){
 
-
-
-
-    public static void addContact (){
-
+        //create a new arraylist named ops to hold the contact information to be added
         ArrayList<ContentProviderOperation> ops = new ArrayList < ContentProviderOperation > ();
 
+        //create a new entry in the contactscontract (contacts database) to add to while initializing name and type to null)
         ops.add(ContentProviderOperation.newInsert(
                 ContactsContract.RawContacts.CONTENT_URI)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
                 .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
                 .build());
 
-        //------------------------------------------------------ Names
+        //adding the name field ex: John Doe, narrowing the fields in the database to just the name column and adding the string
         if (DisplayName != null) {
             ops.add(ContentProviderOperation.newInsert(
                     ContactsContract.Data.CONTENT_URI)
@@ -41,7 +38,8 @@ public class SmsContactManager {
                             DisplayName).build());
         }
 
-        //------------------------------------------------------ Mobile Number
+
+        //Similar to above, navigating the contacts database to the column for mobile number and adding the string passed in
         if (MobileNumber != null) {
             ops.add(ContentProviderOperation.
                     newInsert(ContactsContract.Data.CONTENT_URI)
@@ -58,20 +56,28 @@ public class SmsContactManager {
 
     }
 
-
+    //this method takes in a phone number and context and returns the name from contacts associated with that number if it exists
+    //context can be invoked by "this" in activity class or "getContext(): in other classes. 
     public static String fetchName (Context context, String phoneNumber){
 
+        //this part is checking the database for the phone number value
         ContentResolver cr = context.getContentResolver();
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
         Cursor cursor = cr.query(uri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
+        
+        //if nothing exists for that number, we return a null string
         if (cursor == null) {
             return null;
         }
         String contactName = null;
+        
+        //if the contact name exists, return as a string
         if(cursor.moveToFirst()) {
             contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
         }
-
+        
+        
+        //housekeeping on where the cursor points
         if(cursor != null && !cursor.isClosed()) {
             cursor.close();
         }
