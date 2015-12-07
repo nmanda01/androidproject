@@ -167,6 +167,8 @@ public class ComposeSMSActivity extends Activity {
                 }
             });
 
+
+
             return rootView;
         }
 
@@ -205,6 +207,16 @@ public class ComposeSMSActivity extends Activity {
         }
     }
 
+
+    public void goToInbox(View view) {
+
+        Intent intent = new Intent(ComposeSMSActivity.this, ConversationListActivity.class);
+        startActivity(intent);
+    }
+
+    public void saveAsDraft(View view){
+
+    }
 
 
 

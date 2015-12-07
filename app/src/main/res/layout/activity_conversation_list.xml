@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:id="@+id/MainLayout"
+    android:weightSum="1"
+    android:background="#73c923">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Inbox"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compose"
+        android:id="@+id/btnCompose"
+        android:layout_gravity="right"
+        android:onClick="goToCompose" />
+
+
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/conversation_list"
     android:name="com.example.mysms2.ConversationListFragment"
@@ -9,3 +33,5 @@
     android:layout_marginRight="16dp"
     tools:context="com.example.mysms2.ConversationListActivity"
     tools:layout="@android:layout/list_content" />
+
+    </LinearLayout>

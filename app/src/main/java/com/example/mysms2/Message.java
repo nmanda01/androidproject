@@ -18,6 +18,7 @@ public class Message {
     private String Sender;
     private String Recipient;
     private Date Time;
+    boolean sent;
     //private String Name;
     //SmsContactManager manager = new SmsContactManager();
 

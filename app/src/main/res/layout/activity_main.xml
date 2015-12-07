@@ -37,6 +37,15 @@
         android:layout_alignParentEnd="true"
         android:onClick="goToCompose" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drafts"
+        android:id="@+id/btnDrafts"
+        android:layout_alignTop="@+id/btnInbox"
+        android:layout_centerHorizontal="true"
+        android:onClick="goToCompose" />
+
 
 
 </RelativeLayout>
