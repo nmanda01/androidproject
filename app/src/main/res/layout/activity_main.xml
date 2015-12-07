@@ -37,12 +37,6 @@
         android:layout_alignParentEnd="true"
         android:onClick="goToCompose" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:background="#37be26"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.Toolbar>
+
 
 </RelativeLayout>

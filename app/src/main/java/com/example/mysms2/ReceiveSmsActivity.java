@@ -16,13 +16,14 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
+import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 public class ReceiveSmsActivity extends Activity implements OnItemClickListener {
 
     private static ReceiveSmsActivity inst;
     ArrayList<String> smsMessagesList = new ArrayList<String>();
     ListView smsListView;
     ArrayAdapter arrayAdapter;
+    //BinaryHeap myInbox = new BinaryHeap();
 
     public static ReceiveSmsActivity instance() {
         return inst;
@@ -52,6 +53,7 @@ public class ReceiveSmsActivity extends Activity implements OnItemClickListener 
         int indexBody = smsInboxCursor.getColumnIndex("body");
         int indexAddress = smsInboxCursor.getColumnIndex("address");
         long timeMillis = smsInboxCursor.getColumnIndex("date");
+        //int nameIdx = smsInboxCursor.getColumIndex(DISPLAY_SERVICE);
         Date date = new Date(timeMillis);
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
         String dateText = format.format(date);
@@ -61,6 +63,8 @@ public class ReceiveSmsActivity extends Activity implements OnItemClickListener 
         do {
             String str = smsInboxCursor.getString(indexAddress) +" at "+
                     "\n" + smsInboxCursor.getString(indexBody) +dateText+ "\n";
+            //Thread t = new Thread(smsInboxCursor.getString(indexAddress), name, date);
+
             arrayAdapter.add(str);
         } while (smsInboxCursor.moveToNext());
     }

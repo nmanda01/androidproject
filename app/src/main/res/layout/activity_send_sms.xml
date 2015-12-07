@@ -8,15 +8,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Compose New Message"
+        android:text="Compose"
         android:id="@+id/textView3"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose from contacts"
+        android:id="@+id/btnChooseContact"
+        android:layout_alignParentRight="true"
+        android:onClick="doLaunchContactPicker" />
 
     <TextView
         android:id="@+id/textViewPhoneNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone Number" />
+
+
 
     <EditText
         android:id="@+id/editTextPhoneNo"
@@ -28,7 +38,7 @@
         android:id="@+id/textViewMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SMS Message" />
+        android:text="message body" />
 
     <EditText
         android:id="@+id/editTextSMS"
@@ -39,9 +49,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send SMS"
+        android:text="Send"
         android:id="@+id/btnSendSMS"
-        android:layout_gravity="center_horizontal" />
+        android:layout_alignParentRight="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,5 +59,11 @@
         android:text="Inbox"
         android:id="@+id/btnInbox"
         android:onClick="goToInbox" />
+
+
+
+
+
+
 
 </LinearLayout>

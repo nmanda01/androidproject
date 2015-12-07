@@ -1,5 +1,6 @@
 package com.example.mysms2;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,47 +14,21 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        context = getApplicationContext();
 
 
 
-
-
-        /*
-
-
-        Button compose = (Button) findViewById(R.id.btnCompose);
-        compose.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-
-            }
-        });
-
-
-        Button inbox = (Button) findViewById(R.id.btnInbox);
-        inbox.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                SendSmsActivity msg = new SendSmsActivity();
-            }
-        });
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_1);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Menu", Snackbar.LENGTH_LONG).setAction("Send", )).show();
-            }
-        });
-        */
 
     }
 
@@ -80,12 +55,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToInbox(View view) {
-        Intent intent = new Intent(MainActivity.this, ReceiveSmsActivity.class);
+
+        Intent intent = new Intent(MainActivity.this, ConversationListActivity.class);
         startActivity(intent);
     }
 
     public void goToCompose(View view) {
-        Intent intent = new Intent(MainActivity.this, SendSmsActivity.class);
+        Intent intent = new Intent(MainActivity.this, ComposeSMSActivity.class);
         startActivity(intent);
     }
 
