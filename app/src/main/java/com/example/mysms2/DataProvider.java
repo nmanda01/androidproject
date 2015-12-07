@@ -3,7 +3,10 @@ package com.example.mysms2;
 /**
  * Created by paradroid on 12/1/15.
  */
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,9 +16,9 @@ import java.util.Observable;
 /**
  * Created by sdavies on 09/01/2014.
  */
-public class DataProvider extends Observable {
+public class DataProvider extends Observable{
     private static DataProvider ourInstance = new DataProvider();
-
+    static final String DEBUG_TAG = "AppChat Logging";
     public static DataProvider getInstance() {
         return ourInstance;
     }
@@ -56,9 +59,11 @@ public class DataProvider extends Observable {
         // Ensure that everything gets updated
         setChanged();
         notifyObservers();
+        //Log.v(DEBUG_TAG, "add message name" + message.getName());
     }
 
     public List<Conversation> getConversations() {
+        Collections.sort(conversationList);
         return conversationList;
     }
 

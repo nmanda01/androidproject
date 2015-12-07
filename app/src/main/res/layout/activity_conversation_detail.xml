@@ -4,5 +4,5 @@
     android:id="@+id/conversation_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shinobicontrols.messageme.ConversationDetailActivity"
+    tools:context="com.example.mysms2.ConversationListActivity"
     tools:ignore="MergeRootFrame" />

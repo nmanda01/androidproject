@@ -91,6 +91,7 @@ public class SendSmsActivity extends Activity {
                                 null);
 
                         int phoneNumberIdx = cursor.getColumnIndex(Phone.DATA);
+                        //int nameIndex = cursor.getColumnIndex(Phone.DISPLAY_NAME);
 
                         // let's just get the first phoneNumber
                         if (cursor.moveToFirst()) {

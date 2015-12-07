@@ -101,10 +101,20 @@ public class ComposeSMSActivity extends Activity {
             Toast.makeText(MainActivity.context, "SMS sent.",
                     Toast.LENGTH_LONG).show();
             //DataProvider.addMessage(new Message(smsMessage, "ME", toPhoneNumber, new Date()));
-            String displayName = ContactManagement.getDisplayNameByNumber(toPhoneNumber);
-            myMessage = new Message(smsMessage, toPhoneNumber, "ME", new Date(), displayName);
+            //String displayName = ContactManagement.getDisplayNameByNumber(toPhoneNumber);
+            //Log.w(DEBUG_TAG, "displayName: " + displayName + "\n");
+
+            //String name = ContactsContract.ACCOUNT_NAME;  //ContactManagement.getDisplayNameByNumber(toPhoneNumber);
+            //Log.v(DEBUG_TAG, "ComposeSMS Avtivity: Got name: " + name);
+            SmsContactManager manager = new SmsContactManager();
+
+            //String name = manager.fetchName(toPhoneNumber);
+            myMessage = new Message(smsMessage, toPhoneNumber, "ME", new Date());
+
             addToInbox();
+
             //addMessage(new Message("content9", "sender4", "recipient", new Date()));
+
         } catch (Exception e) {
             Toast.makeText(MainActivity.context,
                     "Sending SMS failed.",
@@ -218,7 +228,7 @@ public class ComposeSMSActivity extends Activity {
                     String phoneNumber = "";
                     try {
                         Uri result = data.getData();
-                        Log.v(DEBUG_TAG, "Got a contact result: "
+                        Log.v(DEBUG_TAG, "ComposeSMS Avtivity: Got a contact result: "
                                 + result.toString());
 
                         // get the contact id from the Uri
@@ -234,15 +244,15 @@ public class ComposeSMSActivity extends Activity {
                         // let's just get the first phoneNumber
                         if (cursor.moveToFirst()) {
                             phoneNumber = cursor.getString(phoneNumberIdx);
-                            Log.v(DEBUG_TAG, "Got number: " + phoneNumber);
+                            Log.v(DEBUG_TAG, "ComposeSMS Avtivity: Got number: " + phoneNumber);
                         } else {
-                            Log.w(DEBUG_TAG, "No results");
+                            Log.w(DEBUG_TAG, "ComposeSMS Avtivity: No results");
                         }
                     } catch (Exception e) {
-                        Log.e(DEBUG_TAG, "Failed to get phoneNumber data", e);
+                        Log.e(DEBUG_TAG, "ComposeSMS Avtivity: Failed to get phoneNumber data", e);
                     } finally {
 
-                        Log.v(DEBUG_TAG, "Finally");
+                        Log.v(DEBUG_TAG, "ComposeSMS Avtivity: Finally");
 
                         if (cursor != null) {
                             cursor.close();
@@ -252,17 +262,17 @@ public class ComposeSMSActivity extends Activity {
 
 
                         if(phoneNumberEntry == null){
-                            Log.w(DEBUG_TAG, "phoneNumberEntry is Null");
+                            Log.w(DEBUG_TAG, "ComposeSMS Avtivity: phoneNumberEntry is Null");
                         }
 
                         if(phoneNumber == null){
-                            Log.w(DEBUG_TAG, "phoneNumber is Null");
+                            Log.w(DEBUG_TAG, "ComposeSMS Avtivity: phoneNumber is Null");
                         }
 
 
                         phoneNumberEntry.setText(phoneNumber);
                         if (phoneNumber.length() == 0) {
-                            Toast.makeText(this, "No phoneNumber found for contact.",
+                            Toast.makeText(this, "ComposeSMS Avtivity: No phoneNumber found for contact.",
                                     Toast.LENGTH_LONG).show();
                         }
 
@@ -272,7 +282,7 @@ public class ComposeSMSActivity extends Activity {
             }
 
         } else {
-            Log.w(DEBUG_TAG, "Warning: activity result not ok");
+            Log.w(DEBUG_TAG, "ComposeSMS Avtivity: Warning: activity result not ok");
         }
     }
 }

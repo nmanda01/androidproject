@@ -61,7 +61,7 @@ import com.example.mysms2.Message;
 import java.util.Date;
 
 public class SMSBroadcastReceiver extends BroadcastReceiver {
-
+    static final String DEBUG_TAG = "AppChat Logging";
     String nameToDisplay;
     public SMSBroadcastReceiver() {
     }
@@ -77,16 +77,17 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
                 for(Object currentObj : pdusObj) {
                     SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) currentObj);
 
-                    String senderName = ContactManagement.getDisplayNameByNumber(currentMessage.getDisplayOriginatingAddress());
+                    //String senderName = ContactManagement.getDisplayNameByNumber(currentMessage.getDisplayOriginatingAddress());
 
-
+                    ////////////////
+                    //Log.v(DEBUG_TAG, "No senderName found" + senderName);
 
 
                     Message message = new Message(
                             currentMessage.getDisplayMessageBody(),
                             currentMessage.getDisplayOriginatingAddress(),
                             "ME",
-                            new Date(), senderName
+                            new Date()
                     );
                     DataProvider.getInstance().addMessage(message);
                 }
