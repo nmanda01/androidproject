@@ -95,6 +95,7 @@ public class ConversationListActivity extends FragmentActivity
         return true;
     }
 
+   /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -105,6 +106,7 @@ public class ConversationListActivity extends FragmentActivity
         }
         return super.onOptionsItemSelected(item);
     }
+    */
 
 
 
